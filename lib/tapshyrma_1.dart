@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/tapshyrma2.dart';
 
 class Tapshyrma1 extends StatefulWidget {
   const Tapshyrma1({Key? key}) : super(key: key);
@@ -14,13 +15,13 @@ class _Tapshyrma1State extends State<Tapshyrma1> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Tapshyrma 01',
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
-        elevation: 2,
+        elevation: 1,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,36 +33,51 @@ class _Tapshyrma1State extends State<Tapshyrma1> {
           //   child: Center(
           //     child: Text('data')),
           // ),
-          Container(
-            decoration: BoxDecoration(
-              color: Color(0xff46F3F3),
-              borderRadius: BorderRadius.all(
-                Radius.circular(12.0),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Tapshyrma2(kelgenSan: number.toString());
+                  },
+                ),
+              );
+            },
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Color(0xff46F3F3),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(12.0),
+                ),
               ),
-            ),
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 120.0, vertical: 15.0),
-              child: Text(
-                'san: $number',
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 120.0, vertical: 15.0),
+                child: Text(
+                  'san: ${number.toString()}',
+                  style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
-          SizedBox(
+         const   SizedBox(
             height: 30.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  number--;
+                  setState(() {});
+                },
                 child: Icon(
                   Icons.remove,
                   color: Colors.black,
                 ),
                 style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
                       ),
@@ -71,24 +87,27 @@ class _Tapshyrma1State extends State<Tapshyrma1> {
                     padding:
                         EdgeInsets.symmetric(horizontal: 15, vertical: 10)),
               ),
-              SizedBox(
+            const  SizedBox(
                 width: 38.0,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  number++;
+                  setState(() {});
+                },
                 child: Icon(
                   Icons.add,
                   color: Colors.black,
                 ),
                 style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
                       ),
                     ),
                     elevation: 1,
                     primary: Color(0xff005EA6),
-                    padding:
+                    padding: const
                         EdgeInsets.symmetric(horizontal: 15, vertical: 10)),
               ),
             ],
